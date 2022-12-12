@@ -31,16 +31,36 @@ public class LibraryController {
 	
 	@RequestMapping("/")
 	public ModelAndView loginPageController() {
-		return new ModelAndView("LoginPage", "library", new Library());
+		return new ModelAndView("LoginPage", "employee", new Employee());
 	}
 	
+//	@RequestMapping("/login")
+//	public ModelAndView loginController(@ModelAttribute("employee") Employee employee, HttpSession session) {
+//		ModelAndView modelAndView=new ModelAndView();
+//		
+//		if(libraryService.loginCheck(employee)) {
+//			modelAndView.addObject("employee", employee);  
+//			session.setAttribute("employee", employee);  
+//			modelAndView.setViewName("index");
+//		}
+//		else {
+//			modelAndView.addObject("message", "Invalid User Credentials, Please try again");
+//			modelAndView.addObject("employee", new Employee());
+//			modelAndView.setViewName("LoginPage");
+//		} 
+//			
+//		return modelAndView;
+//	}
+
 	@RequestMapping("/login")
 	public ModelAndView loginController(@ModelAttribute("employee") Employee employee, HttpSession session) {
 		ModelAndView modelAndView=new ModelAndView();
 		
-		if(libraryService.loginCheck(employee)) {
-			modelAndView.addObject("employee", employee);  
-			session.setAttribute("employee", employee);  
+		Employee employeeDetails = libraryService.loginCheck2(employee.getEmployeeId(), employee.getPassword());
+		
+		if(employeeDetails!=null) {
+			modelAndView.addObject("employee", employeeDetails);  
+			session.setAttribute("employee", employeeDetails);  
 			modelAndView.setViewName("index");
 		}
 		else {

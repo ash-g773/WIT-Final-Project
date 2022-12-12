@@ -21,5 +21,5 @@ public interface LibraryService {
 
 //	boolean loginCheck(Library library);
 
-	boolean loginCheck(Employee employee);
+	Employee loginCheck2(int id, String password);
 }

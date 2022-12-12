@@ -120,20 +120,25 @@ public class LibraryServiceImpl implements LibraryService {
 		return libraries;
 	}
 	
-	@Override
-	public boolean loginCheck(Employee employee) {
-		try {
-			Employee myEmp = restTemplate.getForObject("http://localhost:8081/checks/" + employee.getEmployeeId() +"/" + employee.getPassword(), Employee.class);
-
+//	@Override
+//	public boolean loginCheck(Employee employee) {
+//		try {
+//
 //			Library emp =libraryDao.findByEmployeeIdAndPassword(employee.getEmployeeId(), employee.getPassword());
-			if(myEmp!=null)
-				return true;
-			return false;
-		}
-		catch(Exception ex) {
-			return false;
-		}
+//			if(myEmp!=null)
+//				return true;
+//			return false;
+//		}
+//		catch(Exception ex) {
+//			return false;
+//		}
+//	
+//	}
 	
+	//ash - adding another loginCheck
+	@Override
+	public Employee loginCheck2(int id, String password) {
+		return restTemplate.getForObject("http://localhost:8081/checks/" + id +"/" + password, Employee.class);
 	}
 
 }
