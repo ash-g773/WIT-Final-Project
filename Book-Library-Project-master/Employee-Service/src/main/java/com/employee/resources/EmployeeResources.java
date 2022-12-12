@@ -27,12 +27,13 @@ public class EmployeeResources {
 		return employeeService.searchById(employeeId);
 	}
 	
-	@RequestMapping(path= "/employees", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+	//this is method get because we are getting the info from the database
+	@GetMapping(path= "/employees", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Employee> getAllEmployees() {
 		return employeeService.getAllEmployees();
 	}
 	
-	//login check
+	//login check - a get method again because we are getting stuff from the 
 	@GetMapping(path = "/checks/{empId}/{password}")
 	public Employee checkLogin(@PathVariable("empId") int id, @PathVariable("password") String password) {
 		Employee returnEmp = employeeService.checkLoginIdAndPassword(id, password);
@@ -40,8 +41,10 @@ public class EmployeeResources {
 	}
 	
 	//update book quantity
-	@GetMapping(path = "/updates/{empId}/{quantity}")
-	public boolean updateBookQuantity(@PathVariable("empId") int id, @PathVariable("quantity") int quantity) {
-		return employeeService.changeBookQuantity(id, quantity);
+	@RequestMapping(path = "/updates/{empId}/{quantity}", method = RequestMethod.PUT, produces = MediaType.TEXT_PLAIN_VALUE)
+	public String updateBookQuantity(@PathVariable("empId") int id, @PathVariable("quantity") int quantity) {
+		if(employeeService.changeBookQuantity(id, quantity))
+			return "Number of books borrowed updated";
+		else return "Something went wrong...";
 	}
 }
