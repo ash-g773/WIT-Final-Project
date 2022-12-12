@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org/%22%3E
+<head>
+<meta charset="ISO-8859-1">
+<title>LMS</title>
+</head>
+<body>
+<h1>Library Management System</h1>
+<hr>
+<h3 th:text="'Welcome '+${session.employee.employeeName}+'!'"></h3>
+<hr>
+<a href="./">Borrow Book</a><br><br>
+<a href="./">Return Book</a><br><br>
+<a href="./viewCatalogue">View Library Catalogue</a><br><br>
+
+
+</body>
+</html>

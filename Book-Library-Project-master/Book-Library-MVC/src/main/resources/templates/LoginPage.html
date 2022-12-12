@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org/%22%3E">
+<head>
+<meta charset="ISO-8859-1">
+<title>LMS</title>
+</head>
+<body>
+<h1>Library Management System</h1>
+<form action="#" th:action="@{./login}" th:object="${employee}">
+    Enter Employee ID : <input type="text" th:field="{employeeId}"><br><br>
+    Enter Password : <input type="password" th:field="{password}">
+    <input type="submit" value="Login">
+</form>
+<br><br>
+<h2 th:text="${message}" style="color: red"></h2>
+</body>
+</html>
