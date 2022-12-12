@@ -28,7 +28,7 @@ class BookLibraryMvcApplicationTests {
 	LibraryServiceImpl libraryServiceImpl;
 	
 	
-	@Test
+	@Test //runs + works
 	void testGetBookList() {	
 		assertTrue(libraryServiceImpl.getBookList().size()>0);
 	}

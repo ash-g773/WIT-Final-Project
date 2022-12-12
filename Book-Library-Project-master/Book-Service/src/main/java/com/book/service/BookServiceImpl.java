@@ -32,7 +32,7 @@ public class BookServiceImpl implements BookService {
 	//if book record is updated, will return true 
 	@Override
 	public boolean updateQuantity(int bookId, int changeInCopies) {
-		return (bookDao.updateCopies(bookId, changeInCopies)>0);
+		return (bookDao.updateCopies(changeInCopies, bookId)>0);
 	}
 
 }

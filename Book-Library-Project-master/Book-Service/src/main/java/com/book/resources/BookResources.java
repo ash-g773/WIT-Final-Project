@@ -29,7 +29,7 @@ public class BookResources {
 		return bookService.getAllBooks();
 	}
 	
-	@RequestMapping(path = "/books/{bId}/{copies}",method = RequestMethod.PUT,produces = MediaType.TEXT_PLAIN_VALUE)
+	@GetMapping(path = "/books/{bId}/{copies}", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String updateQuantityResource(@PathVariable("bId") int id,@PathVariable("copies") int noOfCopies) {
 		if(bookService.updateQuantity(id, noOfCopies))
 			return "Number of copies Updated!";

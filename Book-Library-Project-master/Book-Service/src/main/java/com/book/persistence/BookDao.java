@@ -25,7 +25,7 @@ public interface BookDao extends JpaRepository<Book, Integer> {
 	@Modifying
 	@Transactional
 	@Query("update Book set numberOfCopies = numberOfCopies - :numb where bookId = :bookId")
-	int updateCopies(@Param("numb") int bookId, @Param("bookId") int changeInCopies);
+	int updateCopies(@Param("numb") int numb, @Param("bookId") int bookId);
 	
 	
 }
