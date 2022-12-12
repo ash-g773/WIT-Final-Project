@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org/%22%3E
+<html xmlns:th="https://thymeleaf.org/%22%3E">
 <head>
 <meta charset="ISO-8859-1">
 <title>LMS</title>
@@ -15,10 +15,10 @@
         <th>Book ID</th>
         <th>Book Type</th>
     </tr>
-    <tr th:each="library : ${libraries}">
+    <tr th:each="book : ${libraries}">
     <!-- table data -->
-        <td th:text="${library.bookId}"></td>
-        <td th:text="${library.bookType}"></td>
+        <td th:text="${book.bookId}"></td>
+        <td th:text="${book.bookType}"></td>
 
     </tr>
 </table>

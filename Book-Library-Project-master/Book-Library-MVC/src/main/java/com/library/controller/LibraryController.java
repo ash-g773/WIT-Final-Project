@@ -77,7 +77,7 @@ public class LibraryController {
 	public ModelAndView viewCatalogueController() {
 		
 		ModelAndView modelAndView=new ModelAndView();
-		List <Book> libList=libraryService.getBookList();
+		List<Book> libList=libraryService.getBookList();
 		
 		modelAndView.addObject("libraries", libList);
 		modelAndView.setViewName("LibraryCatalogue");

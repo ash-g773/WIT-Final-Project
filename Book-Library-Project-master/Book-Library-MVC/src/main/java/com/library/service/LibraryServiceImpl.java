@@ -30,13 +30,13 @@ public class LibraryServiceImpl implements LibraryService {
 	@Override
 	public List<Book> getBookList() {
 		
-		ArrayList<Book> wholeBookList = new ArrayList<Book>();
+		List<Book> wholeBookList = new ArrayList<Book>();
 		
 		//calling book-service and storing books in bookList object
-		BookList bookList = restTemplate.getForObject("http://localhost:8082/books", BookList.class);
+		Book[] bookList = restTemplate.getForObject("http://localhost:8082/books/", Book[].class);
 		
 		//need to use getter to get the list of books from object BookList
-		for(Book book:bookList.getBooksList()) {
+		for(Book book:bookList) {
 			wholeBookList.add(book);
 		}
 		

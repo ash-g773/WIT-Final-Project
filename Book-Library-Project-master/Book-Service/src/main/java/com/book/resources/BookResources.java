@@ -24,7 +24,7 @@ public class BookResources {
 		return bookService.searchBookById(id);
 	}
 	
-	@RequestMapping(path = "/books",method = RequestMethod.GET,produces =MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(path = "/books/",method = RequestMethod.GET,produces =MediaType.APPLICATION_JSON_VALUE)
 	public List<Book> getAllBooksResource(){
 		return bookService.getAllBooks();
 	}
