@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org/%22%3E">
+<html xmlns:th="https://thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>LMS</title>
 </head>
 <body>
 <h1>Library Management System</h1>
-<form action="#" th:action="@{./login}" th:object="${employee}" th:method=post> <!-- changed to post to hide info in url -->
-    Enter Employee ID : <input type="text" th:field="${employee.employeeId}"><br><br>
+<form action="#" th:action="@{./login}" th:object="${employee}" th:method=post>
+	Enter Employee ID : <input type="text" th:field="${employee.employeeId}"><br><br>
     Enter Password : <input type="password" th:field="${employee.password}">
     <input type="submit" value="Login">
 </form>

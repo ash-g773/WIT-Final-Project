@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>LMS</title>
 </head>
 <body>
 <h1>Library Management System</h1>
 <hr> <!-- Horizontal Row -->
-<h2>List of Books in Catalogue</h2>
+<h2>List of Books Borrowed</h2>
 <table border="1">
 	<!-- tr: Table Row -->
 	<tr>
 		<!-- Table Header -->
 		<th>Book ID</th>
-		<th>Book Name</th>
 		<th>Book Type</th>
-		<th>Author</th>
-		<th>Description</th>
-		<th>Number of copies</th>
+		<th>Issue Date</th>
+		<th>Expected Return Date</th>
+		<th>Number of Copies</th>
+		<th></th>
 	</tr>
 	<tr th:each="library : ${libraries}">
 	<!-- table data -->
 		<td th:text="${library.bookId}"></td>
-		<td th:text="${library.bookName}"></td>
 		<td th:text="${library.bookType}"></td>
-		<td th:text="${library.bookAuthor}"></td>
-		<td th:text="${library.bookDescription}"></td>
+		<td th:text="${library.issueDate}"></td>
+		<td th:text="${library.expectedReturnDate}"></td>
 		<td th:text="${library.numberOfCopies}"></td>
-		<td ><button h class="button button1">Borrow Book</button></td>
+		<td ><button class="button button1">Return Book</button></td>
 		
 		
-	</tr>
+
 </table>
 <br><br>
+
 <a href="./index">Go Back to Menu Page</a>
 </body>
 </html>

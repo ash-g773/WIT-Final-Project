@@ -25,7 +25,12 @@ public interface BookDao extends JpaRepository<Book, Integer> {
 	@Modifying
 	@Transactional
 	@Query("update Book set numberOfCopies = numberOfCopies - :numb where bookId = :bookId")
-	int updateCopies(@Param("numb") int numb, @Param("bookId") int bookId);
+	int updateCopies(@Param("bookId") int bookId, @Param("numb") int changeInCopies);
 	
+//	just trying it - its for the MVC layer 
+//	@Modifying
+//	@Transactional
+//	@Query("update Book set numberOfCopies = numberOfCopies - :numb, issueDate = :date where bookId = :bookId")
+//	int updateBorrowedBoook(@Param("numb") int bookId, @Param("bookId") int changeInCopies, LocalDate issueDate);
 	
 }

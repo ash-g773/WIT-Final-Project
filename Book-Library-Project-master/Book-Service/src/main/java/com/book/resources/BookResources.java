@@ -24,12 +24,12 @@ public class BookResources {
 		return bookService.searchBookById(id);
 	}
 	
-	@RequestMapping(path = "/books/",method = RequestMethod.GET,produces =MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(path = "/books",method = RequestMethod.GET,produces =MediaType.APPLICATION_JSON_VALUE)
 	public List<Book> getAllBooksResource(){
 		return bookService.getAllBooks();
 	}
 	
-	@GetMapping(path = "/books/{bId}/{copies}", produces = MediaType.TEXT_PLAIN_VALUE)
+	@RequestMapping(path = "/books/{bId}/{copies}",method = RequestMethod.PUT,produces = MediaType.TEXT_PLAIN_VALUE)
 	public String updateQuantityResource(@PathVariable("bId") int id,@PathVariable("copies") int noOfCopies) {
 		if(bookService.updateQuantity(id, noOfCopies))
 			return "Number of copies Updated!";

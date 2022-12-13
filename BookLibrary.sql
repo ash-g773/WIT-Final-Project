@@ -41,14 +41,20 @@ values(102, 2, "Martin", "Technology", "2022-12-02", "2022-12-09", 0.0),
 
 select * from library;
 
+-- library
+drop table library;
+
 create table library(
-transactionId varchar(30) primary key,
+transactionId varChar(30) primary key,
 employeeId int,
 employeeName varchar(25),
 bookId int,
 bookType varchar(25),
 issueDate date,
-returnDate date);
+expectedReturnDate date,
+returnDate date, -- set as today -> default(current_date())
+lateFee int,
+numberOfCopies int);
 
 -- ignore for now, no data in library
 insert into library(transactionId, employeeId, employeeName, bookId, bookType, issueDate, returnDate)
@@ -56,6 +62,9 @@ values(102, 2, "Martin", 111, "Technology", "2022-12-02", "2022-12-09"),
 (103, 3, "Sarah", 222, "Management", "2022-12-05", "2022-12-09"),
 (104, 1, "Bob", 333, "Technology", "2022-11-29", "2022-12-09"),
 (105, 2, "Martin", 222, "Data analytics", "2022-11-30", NULL);
+
+insert into library(transactionId, employeeId, employeeName, bookId, bookType, issueDate, expectedReturnDate, returnDate, lateFee, numberOfCopies)
+values("11112022-12-01", 1, "Bob", 111, "Data Analytics", '2022-12-01', '2022-12-08', '2022-12-13', 25, 5);
 
 drop table library;
 
