@@ -1,0 +1,9 @@
+<script>
+function returnButtonActions(){
+    alert("You returned the book!");
+    window.location.reload();
+   	
+}
+</script>
+
+onclick="returnButtonActions()"

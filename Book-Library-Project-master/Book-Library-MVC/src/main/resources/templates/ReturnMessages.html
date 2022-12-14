@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org/%22%3E
+<head>
+<meta charset="ISO-8859-1">
+<title>LMS</title>
+</head>
+<body>
+<h1>Library Management System</h1>
+<hr>
+<form action="#" th:action="@{./borrowBooks}" th:object="${library}" th:method=post>
+
+Enter number of copies <input type="text" name="copies"><br><br> 
+ <input type="submit" value="Submit">
+ 
+<table border="1">
+    <!-- tr: Table Row -->
+    <tr>
+        <!-- Table Header -->
+        <th>Book ID</th>
+        <th>Book Type</th>
+        <th>Issue Date</th>
+        <th>Expected Return Date</th>
+        <th>Number of Copies</th>
+
+    </tr>
+    <tr th:each="library : ${libraries}">
+    <!-- table data -->
+        <td th:text="${library.bookId}"></td>
+        <td th:text="${library.bookType}"></td>
+        <td th:text="${library.issueDate}"></td>
+        <td th:text="${library.expectedReturnDate}"></td>
+        <td th:text="${library.numberOfCopies}"></td>
+
+
+
+
+</table>
+    <!-- Enter number of copies <input type="text" th:field="${book.numberOfCopies}"><br><br> -->
+    </form> 
+<br><br>
+<h2 th:text="${message}" style="color: red"></h2>
+
+<br><br>
+
+<a href="./index">Back to Menu</a>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<footer class="footer">
+
+   <div class="footer-bottom">
+   <p>Creators: </p>
+       &copy; Group 2 Wiley Edge Team
+   </div>
+
+</footer>
+</body>
+</html>

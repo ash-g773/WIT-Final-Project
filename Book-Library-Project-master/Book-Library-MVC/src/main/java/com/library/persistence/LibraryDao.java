@@ -1,5 +1,6 @@
 package com.library.persistence;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -29,6 +30,8 @@ public interface LibraryDao extends JpaRepository<Library, Integer>{
 	@Transactional
 	@Query("UPDATE Library SET numberOfCopies=numberOfCopies-:numb WHERE transactionId=:trid")
 	int updateBorrowedCopies(@Param("numb") int copies, @Param("trid") String trid);
-	
+
+	//get records by type of book and issue date
+	List<Library> findByBookTypeAndIssueDateAndEmployeeId(String bookType, LocalDate issueDate, int employeeId);	
 }
 	

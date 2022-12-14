@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>LMS</title>
+</head>
+<body>
+<h1>Library Management System</h1>
+<hr> <!-- Horizontal Row -->
+<h2>Return a book</h2>
+<!-- need to change from returnBook to a new requestMapping method -->
+<form action="./searchReturnBook" th:method=get>
+	Type of Book : <input type="text" name="bookType"><br><br>
+    Issue Date : <input type="date" name="issueDate">
+    <input type="submit" value="Search">
+</form>
+<br><br>
+<table border="1">
+	<!-- tr: Table Row -->
+	<tr>
+		<!-- Table Header -->
+		<th>Book ID</th>
+		<th>Book Type</th>
+		<th>Issue Date</th>
+		<th>Expected Return Date</th>
+		<th>Number of Copies</th>
+		<th></th>
+	</tr>
+	<tr th:each="library : ${libraries}">
+	<!-- table data -->
+		<td th:text="${library.bookId}"></td>
+		<td th:text="${library.bookType}"></td>
+		<td th:text="${library.issueDate}"></td>
+		<td th:text="${library.expectedReturnDate}"></td>
+		<td th:text="${library.numberOfCopies}"></td>
+		<td ><button class="button button1">Return Book</button></td>
+</table>
+<br><br>
+<h3 th:text="${message}"></h3>
+<br><br>
+<a href="./index">Back to Menu</a>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<footer class="footer">
+
+   <div class="footer-bottom">
+   <p>Creators: </p>
+       &copy; Group 2 Wiley Edge Team
+   </div>
+
+</footer>
+</body>
+</html>

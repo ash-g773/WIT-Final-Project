@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.TypeMismatchException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -212,11 +213,32 @@ public class LibraryServiceImpl implements LibraryService {
 		return restTemplate.getForObject("http://localhost:8081/checks/" + id +"/" + password, Employee.class);
 	}
 	
+	//ash - adding another loginCheck
+//	@Override
+//	public HashMap<Employee, String> loginCheck2(int id, String password) {
+//		Employee employee = null;
+//		String message = "";
+//		try {
+//			employee = restTemplate.getForObject("http://localhost:8081/checks/" + id +"/" + password, Employee.class);
+//		} catch (TypeMismatchException e) {
+//			message = "There was a type mismatch error!";
+//		}
+//		HashMap<Employee, String> map = new HashMap<Employee, String>();
+//		map.put(employee, message);
+//		return map;
+//	}
+	
 	//first need to get list of books which have been borrowed (from library dao)- display in html page and get user to click which 1 they want to return
 	//needs to be just the borrowed books 
 	@Override
 	public List<Library> getLibraryByEmployeeId(int employeeId) {
 		List<Library> libraries = libraryDao.findByEmployeeId(employeeId);
 		return libraries;
+	}
+	
+	//not tested!!!
+	@Override
+	public List<Library> getBooksByTypeAndDate(String type, LocalDate date, int empId) {
+		return libraryDao.findByBookTypeAndIssueDateAndEmployeeId(type, date, empId);
 	}
 }

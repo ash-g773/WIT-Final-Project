@@ -1,5 +1,7 @@
 package com.library.service;
 
+import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 
 import com.library.entity.Book;
@@ -28,6 +30,10 @@ public interface LibraryService {
 	Employee loginCheck(int id, String password);
 
 	List<Library> getLibraryByEmployeeId(int employeeId);
+
+	List<Library> getBooksByTypeAndDate(String type, LocalDate date, int empId);
+
+//	HashMap<Employee, String> loginCheck2(int id, String password);
 	
 	//they want us to take the type of book to be returned and issue date of that book 
 	//how many copies of that book to return ? 
