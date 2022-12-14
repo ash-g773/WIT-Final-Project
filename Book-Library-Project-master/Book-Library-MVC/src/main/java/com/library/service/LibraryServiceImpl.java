@@ -68,6 +68,11 @@ public class LibraryServiceImpl implements LibraryService {
 		if(bookToBorrow.getNumberOfCopies()<copies)
 			return null;
 		
+		//checks if employee has too many books out
+		Employee emp = restTemplate.getForObject("http://localhost:8081/employees/" + employee.getEmployeeId(), Employee.class);
+		if(emp.getBookQuantity()>4) { //sets book limit to 5 I DONT KNOW WHY.
+			return null;
+		}
 		
 		//updates number of book copies available and outputs the updated message
 		//String updated = restTemplate.getForObject("http://localhost:8082/books/" +bookId + "/" + copies, String.class);
@@ -91,8 +96,20 @@ public class LibraryServiceImpl implements LibraryService {
 		if(updatedd.equals("Number of copies not updated!"))
 			return null;
 		
-		//getting the employees info to add to library 
-		Employee myEmp = restTemplate.getForObject("http://localhost:8081/checks/" + employee.getEmployeeId() +"/" + employee.getPassword(), Employee.class);
+		//doing same process above to update books borrowed by employee		
+		Map<String, Integer> ourMap2 = new HashMap<>();
+		ourMap2.put("empId", emp.getEmployeeId());
+		ourMap2.put("quantity", copies);
+		
+		ResponseEntity<String> updated2 = restTemplate.exchange("http://localhost:8081/updates/{empId}/{quantity}", HttpMethod.PUT, entity, String.class, ourMap2);
+		
+		String updatedd2 = updated2.toString();
+		
+		if(updatedd2.equals("Something went wrong..."))
+			return null;
+		
+		//getting the employees info to add to library - removing as its passed in
+		//Employee myEmp = restTemplate.getForObject("http://localhost:8081/checks/" + employee.getEmployeeId() +"/" + employee.getPassword(), Employee.class);
 		
 		//todays date (format- YYYY-MM-DD)
 		LocalDate issueDate = LocalDate.now();
@@ -102,23 +119,23 @@ public class LibraryServiceImpl implements LibraryService {
 		//employeeIdBookIdIssueDate = transaction_Id
 		//issue date - doesn't matter if same book taken out same day as will update the record with the correct number of copies, which is what we want
 		//changing returnDate = null to expectedReturn date as the connection between sql and java doesn't like the null value entry
-		String empId = String.valueOf(employee.getEmployeeId());
+		String empId = String.valueOf(emp.getEmployeeId());
 		String bId = String.valueOf(bookId);
-		Library borrowedBook = new Library(empId+bId+issueDate, employee.getEmployeeId(), myEmp.getEmployeeName(), bookId, bookToBorrow.getBookType(), issueDate, expectedReturnDate, expectedReturnDate, 0, copies);
-		
-		String transactionId = empId+bId+issueDate;
-		
+		Library borrowedBook = new Library(empId+bId+issueDate, emp.getEmployeeId(), emp.getEmployeeName(), bookId, bookToBorrow.getBookType(), issueDate, expectedReturnDate, expectedReturnDate, 0, copies);
+				
 		//Library bookToBorrow2 = libraryDao.findByTransactionId(transactionId);
 
 		//need to then add this borrowed book to the library database- im doing the save and update way to not deal with the exceptions
 		//we can change later if needed - SAVE = SAVE AND UPDATE so if same transaction Id is being entered then will override i think? yes- 
 		//if same transaction id then will override that id with new record- this is fine
 			//problem with this is when more than one type of book is borrowed on the same day i.e. borrow book should keep increasing the number of copies in that one row
-		if(libraryDao.findAll().contains(borrowedBook)) {
-			borrowedBook.setNumberOfCopies(borrowedBook.getNumberOfCopies()+1);
+		Library existingRow = libraryDao.findByTransactionId(borrowedBook.getTransactionId());
+		if(existingRow!=null) {
+			borrowedBook.setNumberOfCopies(existingRow.getNumberOfCopies()+1);
 		}
 		libraryDao.save(borrowedBook);
 	
+		
 		
 		return borrowedBook;
 	}
@@ -190,12 +207,21 @@ public class LibraryServiceImpl implements LibraryService {
 		headers.set("Accept", MediaType.TEXT_PLAIN_VALUE);
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
 		
+		//these dont need the if check
 		Map<String, Integer> ourMap = new HashMap<>();
 		ourMap.put("id", returningBook.getBookId());
 		ourMap.put("copies", -1);
 		
 		restTemplate.exchange("http://localhost:8082/books/{id}/{copies}", HttpMethod.PUT, entity, String.class, ourMap); 
 		
+		//doing same process above to update books returned by employee		
+		System.out.println(returningBook.getEmployeeId());
+		Map<String, Integer> ourMap2 = new HashMap<>();
+		ourMap2.put("empId", returningBook.getEmployeeId());
+		ourMap2.put("quantity", -1);
+		
+		restTemplate.exchange("http://localhost:8081/updates/{empId}/{quantity}", HttpMethod.PUT, entity, String.class, ourMap2); 
+
 		//ResponseEntity<Employee> responseEntity = restTemplate.exchange(uri, HttpMethod.PUT, httpEntity, Employee.class); 
 		//exchange- this will return response entity but we need to return string  
 		
