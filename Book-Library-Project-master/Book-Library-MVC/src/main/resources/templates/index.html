@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org">
 <head>
+<link th:href="@{style.css}" rel="stylesheet" />
 <meta charset="ISO-8859-1">
 <title>LMS</title>
 </head>
@@ -9,12 +10,20 @@
 <hr>
 <h3 th:text="'Welcome '+${session.employee.employeeName}+'!'"></h3>
 <hr>
-<a href="">Borrow Book</a><br><br>
+<div class="card">
+	<a href="">Borrow Book</a><br><br>
+</div>
 <!-- NAT HERE -------------------------------------- -->
-<a href="./returnBook">Return Book</a><br><br>
+<div class="card">
+	<a href="./returnBook">Return Book</a><br><br>
+</div>
 <!-- ----------------------------------------------- -->
-<a href="./viewBorrowedBooks">View Borrowed Books</a><br><br>
-<a href="./viewCatalogue">View Library Catalogue</a><br><br>
+<div class="card">
+	<a href="./viewBorrowedBooks">View Borrowed Books</a><br><br>
+</div>
+<div class="card">
+	<a href="./viewCatalogue">View Library Catalogue</a><br><br>
+</div>
 
 
 </body>
