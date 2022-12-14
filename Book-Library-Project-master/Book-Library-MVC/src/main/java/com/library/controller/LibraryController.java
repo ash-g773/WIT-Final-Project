@@ -153,25 +153,55 @@ public class LibraryController {
 		return modelAndView;
 	}
 	
-	@RequestMapping("/returningBookButton")
-	public ModelAndView returnBookButtonController(@ModelAttribute("library") Library library, HttpSession session) {
+	@RequestMapping("/returningBookButtonFromBorrowedBooks")
+	public ModelAndView returnBookButtonFromBorrowedBooksController(@RequestParam("tId") String tId, HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
-		
+//		System.out.println("transaction id :"+tId);
 		//unable to get library object as it is just an iterator of the libraries object session
 		//Library libraryRet = (Library)session.getAttribute("library"); - not in session so doesnt work
-		System.out.println(library); // for testing
+//		System.out.println(library); // for testing
 
 		//this is null because library passed in is null
-		Library libraryReturning = libraryService.returnBook2(library.getTransactionId(), 1); 
-		
-		//emp namp, book type, issue date, return date, late fee
-		modelAndView.addObject("message", "Return Successful!\n" + library.getEmployeeName() + " , " + library.getBookType() + " , " + library.getIssueDate() + " , " + library.getReturnDate() + "\n");
-		modelAndView.addObject("latefee", "Late Fee is " + library.getLateFee());
+		Library libraryReturning = libraryService.returnBook2(tId, 1);
+		Employee employee=(Employee)session.getAttribute("employee");
+		List<Library> lib =  libraryService.getLibraryByEmployeeId(employee.getEmployeeId());
+//		
+//		//emp namp, book type, issue date, return date, late fee
+		modelAndView.addObject("message2", "Return Successful!");
+		modelAndView.addObject("bookDetails", "Employee name: " + libraryReturning.getEmployeeName() + ", Book Type: " + libraryReturning.getBookType() + ", Issue Date: " + libraryReturning.getIssueDate() + ", Return Date: " + libraryReturning.getReturnDate());
+		modelAndView.addObject("latefee", "Late Fee is " + libraryReturning.getLateFee());
+		modelAndView.addObject("libraries", lib);		
 		modelAndView.setViewName("BorrowedBooks");
+		modelAndView.addObject("employeeId", employee.getEmployeeId());
+
 
 		return modelAndView;
 	}
 	
+	@RequestMapping("/returningBookButtonFromSearchBorrowedBooks")
+	public ModelAndView returnBookButtonController(@RequestParam("tId") String tId, HttpSession session) {
+		ModelAndView modelAndView = new ModelAndView();
+//		System.out.println("transaction id :"+tId);
+		//unable to get library object as it is just an iterator of the libraries object session
+		//Library libraryRet = (Library)session.getAttribute("library"); - not in session so doesnt work
+//		System.out.println(library); // for testing
+
+		//this is null because library passed in is null
+		Library libraryReturning = libraryService.returnBook2(tId, 1);
+		Employee employee=(Employee)session.getAttribute("employee");
+		List<Library> lib =  libraryService.getLibraryByEmployeeId(employee.getEmployeeId());
+//		
+//		//emp namp, book type, issue date, return date, late fee
+		modelAndView.addObject("message2", "Return Successful!");
+		modelAndView.addObject("bookDetails", "Employee name: " + libraryReturning.getEmployeeName() + ", Book Type: " + libraryReturning.getBookType() + ", Issue Date: " + libraryReturning.getIssueDate() + ", Return Date: " + libraryReturning.getReturnDate());
+		modelAndView.addObject("latefee", "Late Fee is " + libraryReturning.getLateFee());
+		modelAndView.addObject("libraries", lib);		
+		modelAndView.setViewName("ReturnBookSearch");
+		modelAndView.addObject("employeeId", employee.getEmployeeId());
+
+
+		return modelAndView;
+	}
 //	// =================Borrowed booksController=======================
 //
 //    @RequestMapping("/ListOfBooksBorrowed")

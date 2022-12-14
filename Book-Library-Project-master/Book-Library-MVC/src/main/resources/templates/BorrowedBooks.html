@@ -22,26 +22,27 @@
 		<th>Number of Copies</th>
 		<th></th>
 	</tr>
-	<form action="#" th:action="@{./returningBookButton}" th:object="${library}" th:method=post>
+	
 	<!--  <form action="./returningBookButton" object="${library}" method=post> -->
 	<tr th:each="library2 : ${libraries}"><!-- add form -->
+	
 		
 	<!-- table data -->
-		<td th:text="${library2.transactionId}"><input th:field="*{library.transactionId}" value="${library2.transactionId}" readonly></td>
-		<td th:text="${library2.bookId}"><input th:field="*{library.bookId}" value="${library2.bookId}" readonly></td><!-- input box editable false aand set  -->
-		<td th:text="${library2.bookType}"><input th:field="*{library.bookType}" value="${library2.bookType}" readonly></td>
-		<td th:text="${library2.issueDate}"><input th:field="*{library.issueDate}" value="${library2.issueDate}" readonly></td>
-		<td th:text="${library2.expectedReturnDate}"><input th:field="*{library.expectedReturnDate}" value="${library2.expectedReturnDate}" readonly></td>
-		<td th:text="${library2.numberOfCopies}"><input th:field="*{library.numberOfCopies}" value="${library2.numberOfCopies}" readonly></td>
-		<td ><input type="submit" class="button button1" value="Borrow Book"/></td> <!-- if js not allowed we can add here separated by ; -->
+		<td th:text="${library2.transactionId}"></td>
+		<td th:text="${library2.bookId}"></td><!-- input box editable false aand set  -->
+		<td th:text="${library2.bookType}"></td>
+		<td th:text="${library2.issueDate}"></td>
+		<td th:text="${library2.expectedReturnDate}"></td>
+		<td th:text="${library2.numberOfCopies}"></td>
+		<td><a th:href="@{'./returningBookButtonFromBorrowedBooks?tId='+${library2.transactionId}}" class = "button button1">Return Book</a></td> <!-- if js not allowed we can add here separated by ; -->
 		<!-- each row is a form and the text fields are uneditable -->
-		
+	
 	</tr>
-	</form>
 </table>
 
 <br><br>
-<h2 th:text="${message}"></h2>
+<h2 th:text="${message2}"></h2>
+<h2 th:text="${bookDetails}"></h2>
 <h2 th:text="${latefee}" style="color: red"></h2>
 <br><br>
 <a href="./index">Back to Menu</a>
