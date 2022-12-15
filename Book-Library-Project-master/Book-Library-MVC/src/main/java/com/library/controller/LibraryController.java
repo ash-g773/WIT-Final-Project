@@ -26,6 +26,11 @@ public class LibraryController {
 	@Autowired
 	private LibraryService libraryService;
 	
+	@RequestMapping("/LogoutPage")
+	public ModelAndView logoutPageController() {
+		return new ModelAndView("LogoutPage");
+	}
+	
 	
 	@RequestMapping("/index")
 	public ModelAndView indexPageController() {
