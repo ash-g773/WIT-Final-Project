@@ -12,17 +12,31 @@
 		<form class="login-form" action="#" th:action="@{./login}" th:object="${employee}" th:method=post> <!-- changed to post to hide info in url -->
 		<div class="login-form-element">
 			ID
-		    <input type="text" th:field="${employee.employeeId}">
+		    <input type="text" th:field="${employee.employeeId}" placeholder="Employee ID(number)" pattern = "[0-9]*" required minlength="1"
+		 	>
 		</div>
 	  	<div class="login-form-element">
 		  	Password
-		    <input type="password" th:field="${employee.password}">
+		    <input type="password" th:field="${employee.password}" required minlength="1">
 	  	</div>
 	    <input type="submit" value="Login">
 		</form>
 	</div>
+
 <br><br>
 <h2 th:text="${message}" style="color: red"></h2>
+<style>
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
 </body>
 </html>

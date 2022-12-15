@@ -223,12 +223,34 @@ public class LibraryController {
 //		//emp namp, book type, issue date, return date, late fee
 		modelAndView.addObject("message2", "Return Successful!");
 		modelAndView.addObject("bookDetails", "Employee name: " + libraryReturning.getEmployeeName() + ", Book Type: " + libraryReturning.getBookType() + ", Issue Date: " + libraryReturning.getIssueDate() + ", Return Date: " + libraryReturning.getReturnDate());
-		modelAndView.addObject("latefee", "Late Fee is " + libraryReturning.getLateFee());
+		modelAndView.addObject("latefee", "Late Fee is " + libraryReturning.getLateFee() + " rupees.");
 		modelAndView.addObject("libraries", lib);		
 		modelAndView.setViewName("ReturnBookSearch");
 		modelAndView.addObject("employeeId", employee.getEmployeeId());
 
 
+		return modelAndView;
+	}
+	
+	@RequestMapping("/searchBooks")
+	public ModelAndView searchBooksInputPageController() {
+		return new ModelAndView("SearchBooksInputPage");
+	}
+	
+	@RequestMapping("/searchBooksByInput")
+	public ModelAndView searchBooksByInputController(@RequestParam("input") String input) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		List<Book> booksFound = libraryService.searchBookListByInput(input);
+		
+		if(booksFound.size()>0) {
+			modelAndView.addObject("booksFound", booksFound);
+			modelAndView.setViewName("SearchBooksByInputDisplay");
+		} else {
+			modelAndView.addObject("message", "Sorry, no such books exist!");
+			modelAndView.setViewName("SearchBooksInputPage");
+		}
+		
 		return modelAndView;
 	}
 }

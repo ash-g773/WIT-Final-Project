@@ -12,21 +12,17 @@
 <hr>
 <h4 th:text="'You have '+${session.employee.bookQuantity}+' books borrowed at the moment.'"></h4>
 <br>
-<div class="card">
-	<a href="./viewCatalogue">Borrow Book</a><br><br>
+<div class=menu>
+    <a href="./viewCatalogue"><img src="borrow.png" alt="borrow" style="width:80px;height:80px;"><br>Borrow Book</a><br><br>
+    <a href="./returnBook"><img src="return.png" alt="return" style="width:80px;height:80px;"><br>Return Book</a><br><br>
+    <a href="./viewBorrowedBooks"><img src="borrowedbooks.png" alt="borrowedbooks" style="width:80px;height:80px;"><br>View Borrowed Books</a><br><br>
+    <a href="./viewCatalogue"><img src="catalogue.png" alt="catalogue" style="width:80px;height:80px;"><br>View Library Catalogue</a><br><br>
+    <a href="./searchBooks"><img src="search.png" alt="search" style="width:80px;height:80px;"><br>Search Books</a>
 </div>
-<!-- NAT HERE -------------------------------------- -->
-<div class="card">
-	<a href="./returnBook">Return Book</a><br><br>
-</div>
-<!-- ----------------------------------------------- -->
-<div class="card">
-	<a href="./viewBorrowedBooks">View Borrowed Books</a><br><br>
-</div>
-<div class="card">
-	<a href="./viewCatalogue">View Library Catalogue</a><br><br>
-</div>
-
-
+<br>
+<br>
+<a href="./LogoutPage">Logout</a>
+<br>
 </body>
 </html>
+

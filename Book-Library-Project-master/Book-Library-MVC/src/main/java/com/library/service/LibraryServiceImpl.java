@@ -70,7 +70,7 @@ public class LibraryServiceImpl implements LibraryService {
 		
 		//checks if employee has too many books out
 		Employee emp = restTemplate.getForObject("http://localhost:8081/employees/" + employee.getEmployeeId(), Employee.class);
-		if(emp.getBookQuantity()>4) { //sets book limit to 5 I DONT KNOW WHY.
+		if(emp.getBookQuantity()>4) { //sets book limit to 5 becausse the check happens before you add a book
 			return null;
 		}
 		
@@ -215,7 +215,6 @@ public class LibraryServiceImpl implements LibraryService {
 		restTemplate.exchange("http://localhost:8082/books/{id}/{copies}", HttpMethod.PUT, entity, String.class, ourMap); 
 		
 		//doing same process above to update books returned by employee		
-		System.out.println(returningBook.getEmployeeId());
 		Map<String, Integer> ourMap2 = new HashMap<>();
 		ourMap2.put("empId", returningBook.getEmployeeId());
 		ourMap2.put("quantity", -1);
@@ -266,5 +265,22 @@ public class LibraryServiceImpl implements LibraryService {
 	@Override
 	public List<Library> getBooksByTypeAndDate(String type, LocalDate date, int empId) {
 		return libraryDao.findByBookTypeAndIssueDateAndEmployeeId(type, date, empId);
+	}
+
+	//do we need this?
+	@Override
+	public List<Book> searchBookListByInput(String input) {
+		
+		List<Book> foundBookList = new ArrayList<Book>();
+		
+		Book[] booksFound = restTemplate.getForObject("http://localhost:8082/books/search/" + input, Book[].class);
+		
+		
+		//need to use getter to get the list of books from object BookList
+		for(Book book:booksFound) {
+			foundBookList.add(book);
+		}
+		
+		return foundBookList;
 	}
 }

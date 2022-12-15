@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org">
 <head>
+<link th:href="@{style.css}" rel="stylesheet" />
 <meta charset="UTF-8">
 <title>LMS</title>
 </head>
@@ -8,8 +9,8 @@
 <h1>Library Management System</h1>
 <hr> <!-- Horizontal Row -->
 <h2>List of Books Borrowed</h2>
-
-<table border="1">
+<!-- CSS added styled table, id bit -->
+<table id= "styled-table" border="1">
 
 	<!-- tr: Table Row -->
 	<tr>
@@ -19,8 +20,8 @@
 		<th>Book Type</th>
 		<th>Issue Date</th>
 		<th>Expected Return Date</th>
-		<th>Number of Copies</th>
-		<th></th>
+		<th>Number of Copies borrowed</th>
+		<th>Return</th>
 	</tr>
 	
 	<!--  <form action="./returningBookButton" object="${library}" method=post> -->
@@ -48,6 +49,7 @@
 <a href="./index">Back to Menu</a>
 <br>
 <br>
+<a href="./LogoutPage">Logout</a>
 <br>
 <br>
 <br>

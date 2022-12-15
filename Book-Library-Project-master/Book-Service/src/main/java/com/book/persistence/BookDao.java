@@ -1,5 +1,7 @@
 package com.book.persistence;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -33,4 +35,7 @@ public interface BookDao extends JpaRepository<Book, Integer> {
 //	@Query("update Book set numberOfCopies = numberOfCopies - :numb, issueDate = :date where bookId = :bookId")
 //	int updateBorrowedBoook(@Param("numb") int bookId, @Param("bookId") int changeInCopies, LocalDate issueDate);
 	
+	//@Transactional
+	@Query("select b from Book b where b.bookName like %:input% or b.bookAuthor like %:input% or b.bookType like %:input% or b.bookDescription like %:input%")
+	List<Book> selectBookWithInput(@Param("input") String input);
 }

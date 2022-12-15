@@ -33,5 +33,6 @@ public interface LibraryDao extends JpaRepository<Library, Integer>{
 
 	//get records by type of book and issue date
 	List<Library> findByBookTypeAndIssueDateAndEmployeeId(String bookType, LocalDate issueDate, int employeeId);	
+	
 }
 	

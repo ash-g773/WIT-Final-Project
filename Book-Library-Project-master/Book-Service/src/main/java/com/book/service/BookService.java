@@ -14,4 +14,6 @@ public interface BookService {
 //	public List<Book> searchBookByType(String type);
 	
 	public boolean updateQuantity(int bookId, int changeInCopies);
+	
+	List<Book> searchBookByInput(String input);
 }

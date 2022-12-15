@@ -36,6 +36,11 @@ public class BookResources {
 		else
 			return "Number of copies not updated!";
 	}
+	
+	@GetMapping(path = "/books/search/{input}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Book> selectBookByInputResource(@PathVariable("input") String input) {
+		return bookService.searchBookByInput(input);
+	}
 
 	
 	

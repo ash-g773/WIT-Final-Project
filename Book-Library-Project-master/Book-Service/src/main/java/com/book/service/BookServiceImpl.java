@@ -35,4 +35,9 @@ public class BookServiceImpl implements BookService {
 		return (bookDao.updateCopies(bookId, changeInCopies)>0);
 	}
 
+	@Override
+	public List<Book> searchBookByInput(String input) {
+		return bookDao.selectBookWithInput(input);
+	}
+
 }

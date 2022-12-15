@@ -2,26 +2,28 @@
 <html xmlns:th="https://thymeleaf.org">
 <head>
 <link th:href="@{style.css}" rel="stylesheet" />
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>LMS</title>
 </head>
 <body>
 <h1>Library Management System</h1>
+<hr> <!-- Horizontal Row -->
 <hr>
-
+<p>This search function will return any books where the selected keyword appears in the title, author name, type or description.</p>
+<hr>
+<form action="./searchBooksByInput">
+	Enter keyword: <input type="text" name="input" pattern="[a-z]{0,9}" required minlength="2"><br><br>
+	<input type="submit" value="Search Books">
+</form>
 <br><br>
-<h2 th:text="${message2}" style="color: red"></h2>
-
-<br><br>
-
-<p>Please Browse our library catalogue for all available books</p>
-<a href="./viewCatalogue">Browse Catalogue</a><br><br>
-
+<h2 th:text="${message}" style="color: red"></h2>
 <br><br>
 <a href="./index">Back to Menu</a>
 <br>
 <br>
 <a href="./LogoutPage">Logout</a>
+<br>
+<br>
 <br>
 <br>
 <br>

@@ -73,3 +73,50 @@ button:active, a:active, input[type="submit"]:active {
     text-align: left;
     gap: 2px;	
 }
+
+#styled-table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 70%;
+  margin: 18px
+}
+
+#styled-table td, #styled-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#styled-table tr:nth-child(even){background-color: #192121;}
+
+#styled-table tr:hover {background-color: #ddd; color: black;}
+
+
+#styled-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #98b5ab;
+  color: white;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 2.5rem;
+}
+.menu {
+    display: flex;
+    justify-content: center;
+    margin-left: 8px;
+    margin-right: 8px;
+
+}
+
+.menu a {
+    padding-top: 50px;
+    margin-left: 8px;
+    margin-right: 8px;
+    height: 180px;
+    width: 160px;
+}

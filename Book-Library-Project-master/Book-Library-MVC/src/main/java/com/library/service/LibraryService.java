@@ -34,6 +34,8 @@ public interface LibraryService {
 	List<Library> getLibraryByEmployeeId(int employeeId);
 
 	List<Library> getBooksByTypeAndDate(String type, LocalDate date, int empId);
+	
+	List<Book> searchBookListByInput(String input);
 
 //	HashMap<Employee, String> loginCheck2(int id, String password);
 	
