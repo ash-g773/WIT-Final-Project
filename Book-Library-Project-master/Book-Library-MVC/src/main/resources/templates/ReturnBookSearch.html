@@ -6,18 +6,30 @@
 <title>LMS</title>
 </head>
 <body>
-<h1>Library Management System</h1>
-<hr> <!-- Horizontal Row -->
-<h2>Return a book</h2>
+<!-- navigation bar -->
+<header class="topnav">
+<h4 class="logo">book2employee</h4>
+<nav>
+<ul class="nav-links">
+<li><p class="logout"> <a href="./LogoutPage">Logout</a></p></li>
+</ul>
+</nav>
+</header>
+<h3 class="welcome">Return a book</h3>
+<br>
+<br>
 <br>
 <!-- need to change from returnBook to a new requestMapping method -->
 <form action="./searchReturnBook" th:method=get>
-	Type of Book : <input type="text" name="bookType" required><br><br>
-    Issue Date : <input type="date" name="issueDate" required>
-    <input type="submit" value="Search">
+	Type of Book <input type="text" name="bookType" placeholder="Enter Book Type ..." style="width:220px;height:30px;"><br><br>
+    Issue Date <input type="date" name="issueDate">
+    <br>
+    <br>
+    <input type="submit" value="Search"  style="width:100px;height:40px; font-size: 14px;">
 </form>
 <br>
-<table id="styled-table" border="1">
+<br>
+<table id="styled-table">
 	<!-- tr: Table Row -->
 	<tr>
 		<!-- Table Header -->
@@ -41,25 +53,30 @@
 <h3 th:text="${message}"></h3>
 <br>
 <h2 th:text="${message2}"></h2>
-<h2 th:text="${bookDetails}"></h2>
+<h3 th:text="${bookDetails}"></h3>
+
 <h2 th:text="${latefee}" style="color: red"></h2>
 <br>
+<p class="policy"><b>RETURN BOOK POLICY</b></p>
+ <div class="policy-detail">
+    <ul class="fee">
+  <li>Maximum of 5 books per loan</li>
+  <li>Books must be returned within <b>7</b> days from loan date. Late fee apply!</li>
+    <dd>- The late fee is <b>Rs 5</b> per day for a <b>Data Analytics</b> Type book</dd>
+    <dd>- The late fee is <b>Rs 6</b> per day for a <b>Technology</b> Type book</dd>
+    <dd>- The late fee is <b>Rs 7</b> per day for a <b>Management</b> Type book</dd>
+  <li>Happy Reading! <i class="fa-regular fa-face-smile"></i></li>
+</ul>  
+  </div>
+<br>
 <a href="./index">Back to Menu</a>
-<br>
-<br>
-<a href="./LogoutPage">Logout</a>
-<br>
-<br>
-<br>
-<br>
 
-<footer class="footer">
-
-   <div class="footer-bottom">
-   <p>Creators: </p>
-       &copy; Group 2 Wiley Edge Team
-   </div>
-
-</footer>
+<br>
+<br>
+<!-- changed footer -->
+<div class = footer>
+   <p class="footer-text">Creators: Ash, Bernice, Boram, Natalia and Roxana </p>
+   <p class="footer-text">Copyright &copy; <script>document.write(new Date().getFullYear());</script>, Group 2 Wiley Edge Team </p>
+</div>
 </body>
 </html>

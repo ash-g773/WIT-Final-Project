@@ -199,7 +199,7 @@ public class LibraryController {
 //		
 //		//emp namp, book type, issue date, return date, late fee
 		modelAndView.addObject("message2", "Return Successful!");
-		modelAndView.addObject("bookDetails", "Employee name: " + libraryReturning.getEmployeeName() + ", Book Type: " + libraryReturning.getBookType() + ", Issue Date: " + libraryReturning.getIssueDate() + ", Return Date: " + libraryReturning.getReturnDate());
+		modelAndView.addObject("bookDetails", "Employee name: " + libraryReturning.getEmployeeName() + ", Book Type: " + libraryReturning.getBookType() + ", Issue Date: " + libraryReturning.getIssueDate() + ", Expected Return Date: " + libraryReturning.getExpectedReturnDate() +", Return Date: " + libraryReturning.getReturnDate());		modelAndView.addObject("feeCalculationMessage", "Should the book not be returned within 7 days, a daily fee applies as follows:\"Data Analytics\" --> 5 rupees; \"Technology\" --> 6 rupees; \"Management\" --> 7 rupees!");
 		modelAndView.addObject("latefee", "Late Fee is " + libraryReturning.getLateFee());
 		modelAndView.addObject("libraries", lib);		
 		modelAndView.setViewName("BorrowedBooks");
@@ -227,7 +227,7 @@ public class LibraryController {
 		
 //		//emp namp, book type, issue date, return date, late fee
 		modelAndView.addObject("message2", "Return Successful!");
-		modelAndView.addObject("bookDetails", "Employee name: " + libraryReturning.getEmployeeName() + ", Book Type: " + libraryReturning.getBookType() + ", Issue Date: " + libraryReturning.getIssueDate() + ", Return Date: " + libraryReturning.getReturnDate());
+		modelAndView.addObject("bookDetails", "Employee name: " + libraryReturning.getEmployeeName() + ", Book Type: " + libraryReturning.getBookType() + ", Issue Date: " + libraryReturning.getIssueDate() + ", Expected Return Date: " + libraryReturning.getExpectedReturnDate() +", Return Date: " + libraryReturning.getReturnDate());		modelAndView.addObject("feeCalculationMessage", "Should the book not be returned within 7 days, a daily fee applies as follows:\"Data Analytics\" --> 5 rupees; \"Technology\" --> 6 rupees; \"Management\" --> 7 rupees!");
 		modelAndView.addObject("latefee", "Late Fee is " + libraryReturning.getLateFee() + " rupees.");
 		modelAndView.addObject("libraries", lib);		
 		modelAndView.setViewName("ReturnBookSearch");

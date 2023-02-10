@@ -2,14 +2,34 @@
 <html xmlns:th="https://thymeleaf.org">
 <head>
 <link th:href="@{style.css}" rel="stylesheet" />
+<script src="https://kit.fontawesome.com/11d5deca7d.js" crossorigin="anonymous"></script>
 <meta charset="ISO-8859-1">
 <title>LMS</title>
 </head>
 <body>
-<h1>Library Management System</h1>
-<hr> <!-- Horizontal Row -->
-<h2>List of Books in Catalogue</h2>
-<table id = "styled-table" border="1">
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<!-- navigation bar -->
+<header class="topnav">
+<h4 class="logo">book2employee</h4>
+<nav>
+<ul class="nav-links">
+<li><p class="logout"> <a href="./LogoutPage">Logout</a></p></li>
+</ul>
+</nav>
+</header>
+  <p class="policy"><b>RETURN BOOK POLICY</b></p>
+ <div class="policy-detail">
+    <ul class="fee">
+  <li>Maximum of 5 books per loan</li>
+  <li>Books must be returned within <b>7</b> days from loan date. Late fee apply!</li>
+    <dd>- The late fee is <b>Rs 5</b> per day for a <b>Data Analytics</b> Type book</dd>
+    <dd>- The late fee is <b>Rs 6</b> per day for a <b>Technology</b> Type book</dd>
+    <dd>- The late fee is <b>Rs 7</b> per day for a <b>Management</b> Type book</dd>
+  <li>Happy Reading! <i class="fa-regular fa-face-smile"></i></li>
+</ul>  
+  </div>
+<h3 class="welcome">List of Books in Catalogue</h3>
+<table id = "styled-table">
 	<!-- tr: Table Row -->
 	<tr>
 		<!-- Table Header -->
@@ -35,26 +55,45 @@
 		
 	</tr>
 </table>
-<br><br>
-<a href="./index">Go Back to Menu Page</a>
-<br>
-<br>
-<a href="./LogoutPage">Logout</a>
 <br>
 <br>
 <br>
+<a class="index" href="./index">Back to Menu</a>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<script>
+// Get the button
+let mybutton = document.getElementById("myBtn");
 
-<footer class="footer">
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
 
-   <div class="footer-bottom">
-   <p>Creators: </p>
-       &copy; Group 2 Wiley Edge Team
-   </div>
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
 
-</footer>
-
-
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+<!-- changed footer -->
+<div class = footer>
+   <p class="footer-text">Creators: Ash, Bernice, Boram, Natalia and Roxana </p>
+   <p class="footer-text">Copyright &copy; <script>document.write(new Date().getFullYear());</script>, Group 2 Wiley Edge Team </p>
+</div>
 </body>
 </html>

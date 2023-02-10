@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 * {
 	margin: 0;
 	padding: 0;
@@ -10,19 +11,19 @@
 }
 
 html, body {
-	height: 100vh;
-	width: 100vw;
-}
+	height: 100%;
+} 
 
 body {
 	background-color: #2F4F4F;
 	color: #F1ECE4;
 	text-align: center;
+	min-height: 100%;
 }
 
 a {
 	text-decoration: none;
-}
+} 
 
 button, a, input {
 	background-color: #dfdfdf;
@@ -42,13 +43,13 @@ button:active, a:active, input[type="submit"]:active {
 
 .banner {
 	width: 100%;
-	height: 70%;
+	height: 60%;
 	object-fit: cover;
 }
 
 .title {
 	position: absolute;
-    top: 40%;
+    top: 85%;
     left: 12px;
     transform: translateY(-50%);
     color: #F1ECE4;
@@ -65,6 +66,7 @@ button:active, a:active, input[type="submit"]:active {
 	display: flex;
     flex-direction: column;
     gap: 12px;
+    margin-top: 40px;
 }
 
 .login-form-element {
@@ -78,7 +80,8 @@ button:active, a:active, input[type="submit"]:active {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 70%;
-  margin: 18px
+  margin: 18px;
+  padding-bottom: 200px;
 }
 
 #styled-table td, #styled-table th {
@@ -99,17 +102,12 @@ button:active, a:active, input[type="submit"]:active {
   color: white;
 }
 
-.footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 2.5rem;
-}
 .menu {
     display: flex;
     justify-content: center;
     margin-left: 8px;
     margin-right: 8px;
+    padding-top: 80px;
 
 }
 
@@ -119,4 +117,176 @@ button:active, a:active, input[type="submit"]:active {
     margin-right: 8px;
     height: 180px;
     width: 160px;
+
+}
+
+.login-form-element p {
+	font-size: 8px;
+}
+.footer {
+  color: #333333;
+  background-color: #dfdfdf;
+  width: 100%;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  text-align: left;
+  position: fixed;
+  text-align: center;
+  height: 70px;
+}
+
+.footer-text {
+  font-size:16px;
+  padding-top:10px;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px 10%
+}
+
+.fa-solid fa-book-open-reader{
+	text-align: center;
+}
+
+.logo {
+	cursor:pointer;
+	font-family: 'Zen Dots', cursive;
+	color: #333333;
+	font-size: 18px;
+	margin-right: auto;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #ffffff;
+  height: 60px
+}
+
+.nav-links li {
+	display: inline-block;
+	padding: 0px 20px;
+}
+
+.topnav .logout {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  margin-right: auto;
+  padding-top: 5px;
+}
+
+.topnav .logout:hover {
+  background-color: #2F4F4F;
+  color: black;
+}
+
+.welcome {
+	
+	padding-top: 60px;
+	font-size: 20px;
+	
+}
+
+.books {
+	font-size: 18;
+	padding-top: 65px;
+}
+
+.policy {
+	padding-top: 65px;
+	padding-bottom: 20px;
+}
+
+.policy-detail {
+	background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding-top: 10px;
+    filter: drop-shadow(0px 0px 7px rgba(1, 1, 1, .7));
+ 
+}
+
+.fee {
+	display: flex;
+    flex-direction: column;
+    justify-content: flex-start;  
+    list-style: square;
+    padding: 0;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 30px;
+  z-index: 77;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #dfdfdf;
+  color: #333333;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+#myBtn:hover {
+  background-color: #bfbfbf;
+}
+
+.logout {
+	color: #333333;
+  letter-spacing: 4px;
+  padding-bottom: 23px;
+  padding-top: 13px;
+  text-align: center;
+}
+
+.logout2 {
+	padding-top: 60px;
+	color: #333333;
+	font-size: 20px;
+}
+
+.logo2 {
+	cursor:pointer;
+	font-family: 'Zen Dots', cursive;
+	color: #333333;
+	font-size: 26px;
+	margin-right: auto;
+}
+
+.container2 {
+  background: #fbfbfb;
+  border-radius: 10px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: 510px;
+  margin: 6rem auto 8.1rem auto;
+  width: 429px;
+  padding: 12px 44px;
+}
+
+.sign-in {
+padding-top: 280px;
+  background-color: #bfbfbf;
+  color: #333333;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.sign-in:hover {
+  opacity: 1;
 }

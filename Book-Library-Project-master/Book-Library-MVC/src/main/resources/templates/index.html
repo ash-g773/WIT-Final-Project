@@ -2,27 +2,40 @@
 <html xmlns:th="https://thymeleaf.org">
 <head>
 <link th:href="@{style.css}" rel="stylesheet" />
+<script src="https://kit.fontawesome.com/11d5deca7d.js" crossorigin="anonymous"></script>
 <meta charset="ISO-8859-1">
 <title>LMS</title>
 </head>
 <body>
-<h1>Library Management System</h1>
-<hr>
-<h3 th:text="'Welcome '+${session.employee.employeeName}+'!'"></h3>
-<hr>
-<h4 th:text="'You have '+${session.employee.bookQuantity}+' books borrowed at the moment.'"></h4>
+
+<!-- navigation bar -->
+<header class="topnav">
+<h4 class="logo">book2employee</h4>
+<nav>
+<ul class="nav-links">
+<li><p class="logout"> <a href="./LogoutPage">Logout</a></p></li>
+</ul>
+</nav>
+</header>
+<h5 class="welcome" th:text="'Welcome '+${session.employee.employeeName}+'!'"></h5>
+
+<h4 class="books" th:text="'You currently have '+${session.employee.bookQuantity}+' books borrowed at the moment.'"></h4>
 <br>
-<div class=menu>
-    <a href="./viewCatalogue"><img src="borrow.png" alt="borrow" style="width:80px;height:80px;"><br>Borrow Book</a><br><br>
-    <a href="./returnBook"><img src="return.png" alt="return" style="width:80px;height:80px;"><br>Return Book</a><br><br>
-    <a href="./viewBorrowedBooks"><img src="borrowedbooks.png" alt="borrowedbooks" style="width:80px;height:80px;"><br>View Borrowed Books</a><br><br>
-    <a href="./viewCatalogue"><img src="catalogue.png" alt="catalogue" style="width:80px;height:80px;"><br>View Library Catalogue</a><br><br>
-    <a href="./searchBooks"><img src="search.png" alt="search" style="width:80px;height:80px;"><br>Search Books</a>
+<div class="menu">
+	<a href="./viewCatalogue"><img src="borrow.png" alt="borrow" style="width:80px;height:80px;"><br>Borrow Book</a><br><br>
+	<a href="./returnBook"><img src="return.png" alt="return" style="width:80px;height:80px;"><br>Return Book</a><br><br>
+	<a href="./viewBorrowedBooks"><img src="borrowedbooks.png" alt="borrowedbooks" style="width:80px;height:80px;"><br>View Borrowed Books</a><br><br>
+	<a href="./viewCatalogue"><img src="catalogue.png" alt="catalogue" style="width:80px;height:80px;"><br>View Library Catalogue</a><br><br>
+	<a href="./searchBooks"><img src="search.png" alt="search" style="width:80px;height:80px;"><br>Search Books</a>
 </div>
-<br>
-<br>
-<a href="./LogoutPage">Logout</a>
-<br>
+
+
+<!-- changed footer -->
+<div class = footer>
+   <p class="footer-text">Creators: Ash, Bernice, Boram, Natalia and Roxana </p>
+   <p class="footer-text">Copyright &copy; <script>document.write(new Date().getFullYear());</script>, Group 2 Wiley Edge Team </p>
+</div>
+
+
 </body>
 </html>
-

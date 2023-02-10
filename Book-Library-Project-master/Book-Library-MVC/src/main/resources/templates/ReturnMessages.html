@@ -6,34 +6,33 @@
 <title>LMS</title>
 </head>
 <body>
-<h1>Library Management System</h1>
-<hr>
+<!-- navigation bar -->
+<header class="topnav">
+<h4 class="logo">books2employee</h4>
+<nav>
+<ul class="nav-links">
+<li><p class="logout"> <a href="./LogoutPage">Logout</a></p></li>
+</ul>
+</nav>
+</header>
 
 <br><br>
 <h2 th:text="${message2}" style="color: red"></h2>
 
 <br><br>
-
 <p>Please Browse our library catalogue for all available books</p>
 <a href="./viewCatalogue">Browse Catalogue</a><br><br>
 
-<br><br>
+
 <a href="./index">Back to Menu</a>
 <br>
 <br>
+<br>
 <a href="./LogoutPage">Logout</a>
-<br>
-<br>
-<br>
-<br>
-
-<footer class="footer">
-
-   <div class="footer-bottom">
-   <p>Creators: </p>
-       &copy; Group 2 Wiley Edge Team
-   </div>
-
-</footer>
+<!-- changed footer -->
+<div class = footer>
+   <p class="footer-text">Creators: Ash, Bernice, Boram, Natalia and Roxana </p>
+   <p class="footer-text">Copyright &copy; <script>document.write(new Date().getFullYear());</script>, Group 2 Wiley Edge Team </p>
+</div>
 </body>
 </html>
